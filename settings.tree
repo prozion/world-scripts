@@ -1,0 +1,23 @@
+settings 
+; this section defines rules to rearrange Tabtree files made by hands. 
+; it provides a nice opportunity to automatically 
+; - sort items by id in alphabet order, 
+; - rearrange keys order, 
+; - etc.
+; so you can forget about items re-order and other tedious stuff while manually typing your Tabtree file.
+; To apply rules described in this file, just launch '> racket rearrange.rkt' in the _scripts directory
+	rearrange
+		globals keys-order:abbr,deabbr,alt,eq,syn,name,before,bdate,start,year,crdate,ddate,end,ht,hq,founder,d fixed-sections:namespace
+		files
+			; Books file:$ROOT/books.tree move-original-to:$ROOT/_oldfiles/books.tree sort-by-numeric-desc:year
+			; Organs file:$ROOT/human_organism/organs.tree move-original-to:$ROOT/_oldfiles/organs.tree
+			; People file:$ROOT/people.tree move-original-to:$ROOT/_oldfiles/people.tree
+			; Transhumanism file:$ROOT/transhumanism.tree move-original-to:$ROOT/_oldfiles/transhumanism.tree
+			Cells file:$ROOT/med_world/human_organism/terms/cells.tree move-original-to:/tmp/projects/worlds/cells.tree
+	wiki 
+		; generated patch table files for wiki
+		patchworks 
+			file path:/var/tmp/projects/transhumanist.online/generated-files filename:th_faces.wiki
+			data file:$ROOT/th_world/people.tree
+			parameters columns:4
+		
