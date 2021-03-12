@@ -13,11 +13,4 @@ settings
 			; Organs file:$ROOT/human_organism/organs.tree move-original-to:$ROOT/_oldfiles/organs.tree
 			; People file:$ROOT/people.tree move-original-to:$ROOT/_oldfiles/people.tree
 			; Transhumanism file:$ROOT/transhumanism.tree move-original-to:$ROOT/_oldfiles/transhumanism.tree
-			Cells file:$ROOT/med_world/human_organism/terms/cells.tree move-original-to:/tmp/projects/worlds/cells.tree
-	wiki 
-		; generated patch table files for wiki
-		patchworks 
-			file path:/var/tmp/projects/transhumanist.online/generated-files filename:th_faces.wiki
-			data file:$ROOT/th_world/people.tree
-			parameters columns:4
-		
+			Cells file:$ROOT/biomed_world/human_organism/terms/cells.tree move-original-to:/tmp/projects/worlds/cells.tree

@@ -7,7 +7,7 @@
 (define-namespace-anchor anchor)
 (define ns-own (namespace-anchor->namespace anchor))
 
-(define ROOT "../worlds")
+(define ROOT "/home/denis/projects/worlds")
 
 (define settings (parse-tab-tree "settings.tree"))
 (define global-rules ($2 settings.rearrange.globals settings))

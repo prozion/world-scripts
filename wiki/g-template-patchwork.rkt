@@ -5,8 +5,7 @@
 (require tabtree/utils)
 (require "lib/common.rkt")
 
-(define-namespace-anchor anchor)
-(define ns-own (namespace-anchor->namespace anchor))
+(provide (all-defined-out))
 
 (define settings (parse-tab-tree "settings.tree"))
 (define filepath ($1 settings.wiki.patchworks.file.path settings))
@@ -101,29 +100,30 @@ T
     ((list? val)
       (string-join (map refery val) ", "))))
 
-(let* ((wiki-table (for/fold
-                ((res start-table))
-                ((item (filter valid-person? items)) (i (in-naturals)))
-                (let* (
-                      (image (get-image-name item))
-                      (name (namefy ($ id item)))
-                      (place (or (get-place item) ""))
-                      (place (refery place))
-                      (job (or (get-job item) ""))
-                      (job (refery job))
-                      (projects (or (get-projects item) ""))
-                      (projects (refery projects))
-                      (last-item? (last? item items))
-                      (first-cell-in-a-row? (equal? (remainder (+ i 1) COLUMNS) 1))
-                      )
-                    (format
-                      "~a~a~n~a"
-                      res
-                      (cond
-                        (first-cell-in-a-row? (str "\n" new-row))
-                        (else ""))
-                      (format cell image name place job projects)))))
-      (wiki-table (str wiki-table "\n" end-table)))
-  (--- (str filepath "/" filename))
-  (write-file (str filepath "/" filename) wiki-table)
-  )
+(define (g-template-patchwork)
+  (let* ((wiki-table (for/fold
+                  ((res start-table))
+                  ((item (filter valid-person? items)) (i (in-naturals)))
+                  (let* (
+                        (image (get-image-name item))
+                        (name (namefy ($ id item)))
+                        (place (or (get-place item) ""))
+                        (place (refery place))
+                        (job (or (get-job item) ""))
+                        (job (refery job))
+                        (projects (or (get-projects item) ""))
+                        (projects (refery projects))
+                        (last-item? (last? item items))
+                        (first-cell-in-a-row? (equal? (remainder (+ i 1) COLUMNS) 1))
+                        )
+                      (format
+                        "~a~a~n~a"
+                        res
+                        (cond
+                          (first-cell-in-a-row? (str "\n" new-row))
+                          (else ""))
+                        (format cell image name place job projects)))))
+        (wiki-table (str wiki-table "\n" end-table)))
+    (--- (str filepath "/" filename))
+    (write-file (str filepath "/" filename) wiki-table)
+    ))

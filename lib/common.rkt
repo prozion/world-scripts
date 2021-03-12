@@ -4,7 +4,7 @@
 
 (provide (all-defined-out))
 
-(define ROOT "../worlds")
+(define ROOT "/home/denis/projects/worlds")
 
 (define (evalpath astr)
   (string-replace astr "$ROOT" ROOT))

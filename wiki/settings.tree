@@ -1,0 +1,13 @@
+settings 
+	wiki 
+		; generated patch table files for wiki
+		patchworks 
+			file path:/var/tmp/projects/transhumanist.online/generated-files filename:th_faces.wiki
+			data file:$ROOT/th_world/people.tree
+			parameters columns:4
+		bdb
+			generated-files by-type-path:/var/tmp/projects/transhumanist.online/generated-files/bdb-by-type.wiki all-bdb-path:/var/tmp/projects/transhumanist.online/generated-files/all-bdb.wiki
+			data all-bdb-tabtree:$ROOT/biomed_world/databases/databases.tree by-type-bdb-tabtree:$ROOT/biomed_world/databases/databases_by_types.tree translations-tabtree:$ROOT/biomed_world/databases/databases_translation.tree
+		terms
+			generated-files all-terms-path:/var/tmp/projects/transhumanist.online/generated-files/all-terms.wiki
+			data all-terms-tabtree:$ROOT/th_world/terms/terms.tree
